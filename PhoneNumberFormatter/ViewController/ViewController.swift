@@ -49,6 +49,29 @@ class ViewController: UIViewController {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
+    
+    @IBAction func submit(_ sender: UIButton) {
+        self.view.endEditing(true)
+        if let textString = (phoneNumberTextField.text)?.removingWhiteSpace() {
+            
+            if textString.first == "0" {
+                let resultString = String(textString.dropFirst())
+                let formattedString = viewModel.getFormatted(resultString, countryCode: countryCode)
+                
+                func handleUsingAlert() {
+                    let suggestionAlert = UIAlertController(title: "", message: "Your Suggested Number Looks Like \n\(formattedString)", preferredStyle: .alert)
+                    
+                    suggestionAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+                        self.phoneNumberTextField.text = formattedString
+                    }))
+                    self.present(suggestionAlert, animated: true, completion: nil)
+                }
+                
+                handleUsingAlert()
+            }
+        }
+    }
+    
 }
 
 // MARK: - TextField Delegate

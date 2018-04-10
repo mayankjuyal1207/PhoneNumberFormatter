@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -98,10 +99,26 @@
                                     <constraint firstItem="LVW-1a-vjh" firstAttribute="centerY" secondItem="Ove-5b-Gq9" secondAttribute="centerY" id="yFd-7x-sv6"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7o5-zA-jWA">
+                                <rect key="frame" x="5" y="213" width="310" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="07x-Ce-5om"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="Submit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="submit:" destination="BYZ-38-t0r" eventType="touchUpInside" id="r2t-vo-fKa"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.067470438778400421" green="0.84820860624313354" blue="0.99993795156478882" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="7o5-zA-jWA" firstAttribute="leading" secondItem="Wej-AT-2QX" secondAttribute="leading" id="1bF-0k-pRZ"/>
                             <constraint firstAttribute="trailing" secondItem="Wej-AT-2QX" secondAttribute="trailing" constant="5" id="H3s-Pj-sac"/>
+                            <constraint firstItem="7o5-zA-jWA" firstAttribute="trailing" secondItem="Wej-AT-2QX" secondAttribute="trailing" id="KqH-qk-CxD"/>
+                            <constraint firstItem="7o5-zA-jWA" firstAttribute="top" secondItem="Wej-AT-2QX" secondAttribute="bottom" constant="32" id="NtG-wP-qoe"/>
                             <constraint firstItem="Wej-AT-2QX" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="80" id="Q1W-ol-sak"/>
                             <constraint firstItem="Wej-AT-2QX" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="lUd-fC-dGD"/>
                         </constraints>

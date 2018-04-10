@@ -7,5 +7,5 @@ target 'PhoneNumberFormatter' do
 
   # Pods for PhoneNumberFormatter
 source 'https://github.com/CocoaPods/Specs.git'
-pod 'PhoneNumberKit', '~> 1.0'
+pod 'PhoneNumberKit'
 end

@@ -36,6 +36,13 @@ class ViewModel: NSObject {
         textField.sendActions(for: .editingChanged)
     }
     
+    func getFormatted(_ text: String, countryCode: String) -> String {
+        let combinedString = addingCountryCodeTo(text, countryCode: countryCode).removingWhiteSpace()
+        let formattedNationalNumber = pratialFormater.formatPartial(combinedString as String)
+        let newString = removingCountryCodeFrom(formattedNationalNumber, countryCode: countryCode)
+        return newString
+    }
+    
     func getCountryPhoneCode(_ countryCode : String) -> String {
         let countries = Countries().countries
         for country in countries {

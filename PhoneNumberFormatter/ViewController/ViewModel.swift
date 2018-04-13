@@ -43,23 +43,25 @@ class ViewModel: NSObject {
         return newString
     }
     
-    func getCountryPhoneCode(_ countryCode : String) -> String {
+//    func getFormattedNumber(_ text: String, countryCode: String, completion: (Bool, String)->Void) {
+//        if text.first == "0" {
+//            let resultString = String(text.dropFirst())
+//            let combinedString = addingCountryCodeTo(resultString, countryCode: countryCode).removingWhiteSpace()
+//            let formattedNationalNumber = pratialFormater.formatPartial(combinedString as String)
+//            let newString = removingCountryCodeFrom(formattedNationalNumber, countryCode: countryCode)
+//            completion(true, newString)
+//        }
+//        completion(false, "")
+//    }
+    
+    func getCountryPhoneCode(_ countryCode : String) -> (String, String) {
         let countries = Countries().countries
         for country in countries {
             if country.countryCode == countryCode {
-                return country.phoneExtension
+                return (country.phoneExtension, country.flag ?? "")
             }
         }
-        return ""
-    }
-    
-    func flag(country:String) -> String {
-        let base : UInt32 = 127397
-        var s = ""
-        for v in country.unicodeScalars {
-            s.unicodeScalars.append(UnicodeScalar(base + v.value)!)
-        }
-        return String(s)
+        return ("", "")
     }
     
      /*func validatePhoneNumber(cellPhone:String,countryCode:String,countryName:String)->Bool{

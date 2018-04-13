@@ -30,16 +30,15 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         countryList.delegate = self
         initView()
-        
     }
     
     //MARK: - INITIALISE View
     
     private func initView() {
         let locale = Locale.current
-        let countryPhoneCode = viewModel.getCountryPhoneCode(locale.regionCode ?? "")
-        let flag = viewModel.flag(country: locale.regionCode ?? "")
-        
+        let countryPhoneCode = viewModel.getCountryPhoneCode(locale.regionCode ?? "").0
+        //let flag = viewModel.flag(country: locale.regionCode ?? "")
+        let flag = viewModel.getCountryPhoneCode(locale.regionCode ?? "").1
         flagLabel.text = flag
         countryCodeTextField.text = "+"+countryPhoneCode
     }
@@ -59,9 +58,10 @@ class ViewController: UIViewController {
                 let formattedString = viewModel.getFormatted(resultString, countryCode: countryCode)
                 
                 func handleUsingAlert() {
-                    let suggestionAlert = UIAlertController(title: "", message: "Your Suggested Number Looks Like \n\(formattedString)", preferredStyle: .alert)
+                    let message = "Your Suggested Number Looks Like\n\(countryCode)\(formattedString)"
+                    let suggestionAlert = UIAlertController(title: "", message: message, preferredStyle: .alert)
                     
-                    suggestionAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (_) in
+                    suggestionAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action) in
                         self.phoneNumberTextField.text = formattedString
                     }))
                     self.present(suggestionAlert, animated: true, completion: nil)
